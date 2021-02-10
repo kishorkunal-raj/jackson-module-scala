@@ -30,6 +30,31 @@ matrix:
       jdk: openjdk15
       env: SONATYPE_PUBLISH=false      
 
+    - scala: 2.11.12
+      jdk: openjdk8
+      arch: ppc64le
+      env: SONATYPE_PUBLISH=true
+    # Scala 2.12+ only supports JDK 8+
+    - scala: 2.12.13
+      jdk: openjdk8
+      arch: ppc64le
+      env: SONATYPE_PUBLISH=true
+    - scala: 2.12.13
+      jdk: openjdk11
+      arch: ppc64le
+      env: SONATYPE_PUBLISH=false
+    - scala: 2.13.4
+      jdk: openjdk8
+      arch: ppc64le
+      env: SONATYPE_PUBLISH=true
+    - scala: 2.13.4
+      jdk: openjdk11
+      arch: ppc64le
+      env: SONATYPE_PUBLISH=false
+    - scala: 2.13.4
+      jdk: openjdk15
+      arch: ppc64le
+      env: SONATYPE_PUBLISH=false
 after_success:
   - >
       test "${TRAVIS_PULL_REQUEST}" = 'false' && test "${SONATYPE_PUBLISH}" = 'true' &&
